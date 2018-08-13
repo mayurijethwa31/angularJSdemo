@@ -1,0 +1,42 @@
+<html ng-app="myModule">
+    <head>
+        <link rel="stylesheet" type="text/css" href="sort.css">
+    </head>
+    <body ng-controller="myCtrl"  ng-cloak>
+        <select ng-model="sortColumn">
+            <option value="firstName">Firstname in ascending</option>
+            <option value="-lastName">Surname in descending</option>
+            <option value="dateOfBirth">dateOfBirth in ascending</option>
+            <option value="gender">gender in ascending</option>
+            <option value="-salary">salary in descending</option>
+        </select>
+         <table>
+            <thead>
+                <tr>
+                    <th ng-click="sortData('firstName')">
+                        Name<div ng-class="getClassSortData('firstName')"></div></th>
+                    <th ng-click="sortData('lastName')">
+                        Surname<div ng-class="getClassSortData('lastName')"></div></th>
+                    <th ng-click="sortData('gender')">
+                        Gender<div ng-class="getClassSortData('gender')"></div></th>
+                    <th ng-click="sortData('salary')">
+                        salary<div ng-class="getClassSortData('salary')"></div></th>
+                    <th ng-click="sortData('dateOfBirth')">
+                        dateOfBirth<div ng-class="getClassSortData('dateOfBirth')"></div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat ="employee in employeesObj |orderBy:sortColumn : reverseSort" >
+                    <td>{{employee.firstName}}</td>
+                    <td>{{employee.lastName}}</td>
+                    <td>{{employee.gender}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td>{{employee.dateOfBirth | date:"dd/mm/yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    <script src="angular.min.js"></script>
+    <script src="sort.js"></script>
+    </body>
+
+</html>

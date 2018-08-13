@@ -1,0 +1,42 @@
+<html ng-app="myModule">
+    <head></head>
+    <body ng-controller="myCtrl">
+        <div ng-init="employeesObj = [
+                         {firstName: 'Ben', lastName: 'Hastings', gender: 'Male', salary: 55000},
+                         {firstName: 'Sara', lastName: 'Paul', gender: 'Female', salary: 68000},
+                         {firstName: 'Mark', lastName: 'Holland', gender: 'Male', salary: 57000},
+                         {firstName: 'Pam', lastName: 'Mackintosh', gender: 'Male', salary: 53000},
+                         {firstName: 'Todd', lastName: 'Barber', gender: 'Female', salary: 60000},
+
+                      ];">
+         <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat ="employee in employeesObj">
+                    <td>{{employee.firstName | uppercase}}</td>
+                    <td>{{employee.lastName |lowercase}}</td>
+                    <td>{{employee.gender}}</td>
+                    <td>{{employee.salary|currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        </div>
+        <script src="angular.min.js"></script>
+         <script>
+        var app = angular.module('myModule',[]);
+            app.controller('myCtrl', function($scope){
+                
+            })
+        </script>
+    
+    </body>
+
+</html>

@@ -1,0 +1,36 @@
+<html ng-app="myModule">
+    <head>
+    <style>
+        table,th,td{
+                border: 1px solid black;
+            }
+        </style></head>
+    <body ng-controller="myCtrl">
+        Search:<input type="text" ng-model="searchData" placeholder="search employees"/>
+        <br><br/>
+                 <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>salary</th>
+                    <th>dateOfBirth</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat ="employee in employeesObj |filter:searchData">
+                    <td>{{employee.firstName}}</td>
+                    <td>{{employee.lastName}}</td>
+                    <td>{{employee.gender}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td>{{employee.dateOfBirth | date:"dd/mm/yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    <script src="angular.min.js"></script>
+    <script src="filter.js"></script>
+    </body>
+
+</html>

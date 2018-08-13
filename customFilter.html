@@ -1,0 +1,48 @@
+<html ng-app="myModule">
+    <head></head>
+    <body ng-controller="myCtrl">
+         <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat ="employee in employeesObj">
+                    <td>{{employee.firstName}}</td>
+                    <td>{{employee.lastName}}</td>
+                    <td>{{employee.gender|gender}}</td>
+                    <td>{{employee.salary|currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    <script src="angular.min.js"></script>
+        <script>
+        var app = angular.module('myModule',[]);
+            app.filter('gender',function(){
+                return function(gender){
+                    switch(gender){
+                        case 1 :
+                            return "male";
+                        case 2 :
+                            return "female";
+                           }
+                }
+            }) 
+            app.controller('myCtrl', function($scope){
+                $scope.employeesObj = [
+                         {firstName: "Adam", lastName: "Hastings", gender: 1, salary: 55000},
+                         {firstName: "Sarah", lastName: "Paul", gender: 2, salary: 68000},
+                         {firstName: "Ken", lastName: "Holland", gender: 1, salary: 57000},
+                         {firstName: "Pam", lastName: "Mackintosh", gender: 1, salary: 53000},
+                         {firstName: "Tim", lastName: "Barber", gender: 2, salary: 60000},
+
+                      ];
+            })
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,12 @@
+<html ng-app="myApp">
+    <head>
+    <script src="angular.min.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body ng-controller="myCtrl">
+    <button type="button" ng-click="myFunc()">click me!</button>
+     <div ng-repeat=" x in myArr track by $index">{{x}}</div>   
+    </body>
+
+
+</html>

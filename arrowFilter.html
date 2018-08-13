@@ -1,0 +1,29 @@
+<html ng-app="myModule">
+    <head></head>
+    <body ng-controller="myCtrl">
+    <script src="angular.min.js"></script>
+    <script src=""></script>
+        <script>
+        var app = angular.module('myModule',[]);
+            app.controller('myCtrl', function($scope){
+               $scope.todoList = [
+                   {title: 'code',
+                       isDone: true},
+                   {title: 'study',
+                       isDone: false},
+                   {title: 'finish office work',
+                       isDone: true}
+               ] 
+               
+               $scope.thingsDone = $scope.todoList.filter((todo)=> todo.isDone == true)
+                
+                $scope.thingsDone = $scope.todoList.filter(function (todo){
+                    debugger;
+                    return todo.isDone == true;
+                })
+               console.log($scope.thingsDone);
+            })
+        </script>
+    </body>
+
+</html>
